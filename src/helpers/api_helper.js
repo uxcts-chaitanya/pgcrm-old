@@ -30,7 +30,11 @@ export async function get(url, config = {}) {
 export async function post(url, data, config = {}) {
 	return axiosApi
 		.post(url, { ...data }, { ...config })
-		.then((response) => response.data)
+		.then((response) => {
+			if (response.status === 400 || response.status === 500)
+				throw response.data;
+			return response.data;
+		})
 		.catch((err) => {
 			throw err;
 		});

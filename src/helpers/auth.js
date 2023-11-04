@@ -48,6 +48,7 @@ const postRegister = (url, data) => {
 
 // Login Method
 const postLogin = (url, data) => {
+	// intended for internal control operations.
 	return post(url, data, {});
 };
 
