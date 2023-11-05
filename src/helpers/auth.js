@@ -47,9 +47,9 @@ const postRegister = (url, data) => {
 };
 
 // Login Method
-const postLogin = (url, data) => {
+const postLogin = async (url, data) => {
 	// intended for internal control operations.
-	return post(url, data, {});
+	return await post(url, data, {});
 };
 
 // postForgetPwd

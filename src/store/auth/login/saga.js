@@ -6,6 +6,8 @@ import { apiError, loginUserSuccessful, logoutUserSuccess } from "./actions";
 
 // AUTH related methods
 import { postLogin } from "../../../helpers/auth";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 
 //If user is login then dispatch redux action's are directly from here.
 function* loginUser({ payload: { user, history } }) {
@@ -14,9 +16,15 @@ function* loginUser({ payload: { user, history } }) {
 			username: user.username,
 			password: user.password,
 		});
-		localStorage.setItem("authUser", JSON.stringify(response));
-		yield put(loginUserSuccessful(response));
-		history.push("/dashboard");
+		console.log(response);
+		if (!response.isAuthenticated) {
+			toastr.warning(response.message);
+		} else {
+			toastr.success(response.message);
+			localStorage.setItem("authUser", JSON.stringify(response));
+			yield put(loginUserSuccessful(response));
+			history.push("/dashboard");
+		}
 	} catch (error) {
 		yield put(apiError(error));
 	}

@@ -30,6 +30,7 @@
     "i18next-browser-languagedetector": "^7.1.0",
     "leaflet": "^1.9.4",
     "lodash.clonedeep": "^4.5.0",
+    "md5": "^2.3.0",
     "mdbreact": "^5.2.0",
     "metismenujs": "^1.4.0",
     "mkdirp": "^3.0.1",

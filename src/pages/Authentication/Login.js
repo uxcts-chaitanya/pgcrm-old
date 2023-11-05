@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Row, Col, Input, Button, Alert, Container, Label } from "reactstrap";
 import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { checkLogin, apiError } from "../../store/actions";
+import md5 from "md5";
 
 import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
 
 const Login = (props) => {
-	console.log(props);
-	const [creds, setCreds] = useState({
-		userName: "",
-		password: "",
-	});
-	const [userName, setUserName] = useState("admin@pgcrm.in");
-	const [password, setPassword] = useState("123456");
-
+	const username = useRef("");
+	const password = useRef("");
 	useEffect(() => {
 		props.apiError("");
 		document.body.classList.add("auth-body-bg");
@@ -25,9 +20,10 @@ const Login = (props) => {
 	}, []);
 
 	const handleSubmit = () => {
+		console.log(username.current);
 		let values = {
-			username: userName,
-			password: password,
+			username: username.current,
+			password: md5(password.current),
 		};
 		props.checkLogin(values, props.history);
 	};
@@ -81,10 +77,13 @@ const Login = (props) => {
 															<Label htmlFor="username">Email</Label>
 															<AvField
 																name="username"
-																value={userName}
+																ref={username}
 																type="text"
 																className="form-control"
 																id="username"
+																onChange={(event) =>
+																	(username.current = event.target.value)
+																}
 																validate={{ email: true, required: true }}
 																placeholder="Enter username"
 															/>
@@ -95,8 +94,11 @@ const Login = (props) => {
 															<Label htmlFor="userpassword">Password</Label>
 															<AvField
 																name="password"
-																value={password}
 																type="password"
+																ref={password}
+																onChange={(event) =>
+																	(password.current = event.target.value)
+																}
 																className="form-control"
 																id="userpassword"
 																placeholder="Enter password"

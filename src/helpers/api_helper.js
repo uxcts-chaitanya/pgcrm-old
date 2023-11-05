@@ -28,16 +28,9 @@ export async function get(url, config = {}) {
 }
 
 export async function post(url, data, config = {}) {
-	return axiosApi
+	return await axiosApi
 		.post(url, { ...data }, { ...config })
-		.then((response) => {
-			if (response.status === 400 || response.status === 500)
-				throw response.data;
-			return response.data;
-		})
-		.catch((err) => {
-			throw err;
-		});
+		.then((response) => response.data);
 }
 
 export async function put(url, data, config = {}) {
