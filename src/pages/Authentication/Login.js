@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { checkLogin, apiError } from "../../store/actions";
-import md5 from "md5";
 
 import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
+import md5 from "md5";;
 
 const Login = (props) => {
 	const username = useRef("");
@@ -19,11 +19,12 @@ const Login = (props) => {
 		return document.body.classList.remove("auth-body-bg");
 	}, []);
 
-	const handleSubmit = () => {
+	const handleSubmit = async () => {
 		console.log(username.current);
 		let values = {
 			username: username.current,
 			password: md5(password.current),
+			// password: await bcrypt.hash(password.current, 10),
 		};
 		props.checkLogin(values, props.history);
 	};
