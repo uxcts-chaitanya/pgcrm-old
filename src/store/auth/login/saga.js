@@ -16,12 +16,12 @@ function* loginUser({ payload: { user, history } }) {
 			username: user.username,
 			password: user.password,
 		});
-		console.log(response);
 		if (!response.isAuthenticated) {
 			toastr.warning(response.message);
 		} else {
 			toastr.success(response.message);
 			localStorage.setItem("authUser", JSON.stringify(response));
+			// Redux.
 			yield put(loginUserSuccessful(response));
 			history.push("/dashboard");
 		}
@@ -33,6 +33,7 @@ function* loginUser({ payload: { user, history } }) {
 function* logoutUser({ payload: { history } }) {
 	try {
 		localStorage.removeItem("authUser");
+		yield put(logoutUserSuccess());
 		history.push("/login");
 	} catch (error) {
 		yield put(apiError(error));

@@ -17,6 +17,7 @@ import Error404 from "../pages/Utility/Error404";
 import Error500 from "../pages/Utility/Error500";
 
 //Hostel Management
+import SetUpHostel from "../pages/SetUp";
 import HostelList from "../pages/Hostel/List";
 import AddHostel from "../pages/Hostel/Add";
 
@@ -24,6 +25,7 @@ const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/hostels/list", component: HostelList },
 	{ path: "/hostels/add", component: AddHostel },
+	{ path: "/hostels/setup", component: SetUpHostel },
 
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },

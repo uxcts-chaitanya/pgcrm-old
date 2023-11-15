@@ -7,7 +7,7 @@ import { checkLogin, apiError } from "../../store/actions";
 
 import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
-import md5 from "md5";;
+import md5 from "md5";
 
 const Login = (props) => {
 	const username = useRef("");
@@ -20,7 +20,6 @@ const Login = (props) => {
 	}, []);
 
 	const handleSubmit = async () => {
-		console.log(username.current);
 		let values = {
 			username: username.current,
 			password: md5(password.current),
