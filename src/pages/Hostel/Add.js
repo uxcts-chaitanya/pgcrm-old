@@ -2,7 +2,11 @@ import React, { useState, useRef } from "react";
 import { Card, CardBody, Col, Row, Container, Label, Input } from "reactstrap";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
-const AddHostel = () => {
+import { enrollHostel } from "../../models/hostels";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
+
+const AddHostel = (props) => {
 	const breadcrumbItems = [
 		{ title: "Home", link: "/" },
 		{ title: "Hostels", link: "#" },
@@ -37,7 +41,6 @@ const AddHostel = () => {
 			...state,
 			regCertificate: event.target.files[0],
 		});
-		console.log(state);
 	};
 
 	const handlePhotoChange = (event) => {
@@ -45,12 +48,37 @@ const AddHostel = () => {
 			...state,
 			ownerPhoto: event.target.files[0],
 		});
-		console.log(state);
 	};
 
-	const enrollHostel = () => {
-		console.log(state);
-		return false;
+	const submitForEnroll = async (event) => {
+		event.preventDefault();
+		let data = {
+			firstname: firstname.current,
+			lastname: lastname.current,
+			joining_date: doj.current,
+			gender: gender.current,
+			date_of_birth: dob.current,
+			mobile: mobile.current,
+			landline: landline.current,
+			owner_type: owner.current,
+			address: address.current,
+			email: email.current,
+			fathername: fathername.current,
+			language: lang.current,
+			country: countryname.current,
+			state: statename.current,
+			city: cityname.current,
+			geo_location: locname.current,
+			owner_photo: state.ownerPhoto.name,
+			registration_certificate: state.regCertificate.name,
+		};
+		const response = await enrollHostel(data);
+		if (response) {
+			toastr.success(`Hostel enrolled successfully`);
+			props.history.push("/hostels/list");
+		} else {
+			toastr.error(`Hostel enrollment failed`);
+		}
 	};
 
 	return (
@@ -61,7 +89,10 @@ const AddHostel = () => {
 					<Row>
 						<Col xs={12}>
 							<Card>
-								<form  method="post" onSubmit={enrollHostel}>
+								<form
+									method="post"
+									onSubmit={(event) => submitForEnroll(event)}
+								>
 									<CardBody>
 										<h4 className="card-title">Enrollment Form</h4>
 										<p className="card-title-desc">

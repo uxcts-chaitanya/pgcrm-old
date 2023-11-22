@@ -20,12 +20,16 @@ import Error500 from "../pages/Utility/Error500";
 import SetUpHostel from "../pages/SetUp";
 import HostelList from "../pages/Hostel/List";
 import AddHostel from "../pages/Hostel/Add";
+import ChangePassword from "../pages/Profile/cp";
 
 const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/hostels/list", component: HostelList },
 	{ path: "/hostels/add", component: AddHostel },
 	{ path: "/hostels/setup", component: SetUpHostel },
+
+	// Profiles
+	{ path: "/profile/cp", component: ChangePassword },
 
 	// this route should be at the end of all other routes
 	{ path: "/", exact: true, component: () => <Redirect to="/dashboard" /> },

@@ -5,7 +5,7 @@ import { REGISTER_USER } from "./actionTypes";
 import { registerUserSuccessful, registerUserFailed } from "./actions";
 
 //AUTH related methods
-import { postRegister } from "../../../helpers/auth";
+import { postRegister } from "../../../models/auth";
 
 // Is user register successfull then direct plot user in redux.
 function* registerUser({ payload: { user } }) {

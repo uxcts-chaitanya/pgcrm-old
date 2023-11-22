@@ -5,7 +5,7 @@ import { FORGET_USER } from "./actionTypes";
 import { forgetUserSuccessful, userForgetPasswordError } from "./actions";
 
 // AUTH related methods
-import { postForgetPwd } from "../../../helpers/auth";
+import { postForgetPwd } from "../../../models/auth";
 
 //If user is login then dispatch redux action's are directly from here.
 function* forgetUser({ payload: { user, history } }) {

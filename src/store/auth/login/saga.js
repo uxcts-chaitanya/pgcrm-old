@@ -5,7 +5,7 @@ import { CHECK_LOGIN, LOGOUT_USER } from "./actionTypes";
 import { apiError, loginUserSuccessful, logoutUserSuccess } from "./actions";
 
 // AUTH related methods
-import { postLogin } from "../../../helpers/auth";
+import { postLogin } from "../../../models/auth";
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 
@@ -23,7 +23,25 @@ function* loginUser({ payload: { user, history } }) {
 			localStorage.setItem("authUser", JSON.stringify(response));
 			// Redux.
 			yield put(loginUserSuccessful(response));
-			history.push("/dashboard");
+
+			// logic to check type of user.
+			console.log(response.user);
+
+			if (
+				response.user.user_type === "hostel_admin" &&
+				!response.user.last_login
+			) {
+				history.push("/profile/cp");
+			} else {
+				if (
+					response.user.user_type === "hostel_admin" &&
+					!response.user.setup_done
+				) {
+					history.push("/hostels/setup");
+				} else {
+					history.push("/dashboard");
+				}
+			}
 		}
 	} catch (error) {
 		yield put(apiError(error));
