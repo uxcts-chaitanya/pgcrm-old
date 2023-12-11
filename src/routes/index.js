@@ -22,11 +22,21 @@ import HostelList from "../pages/Hostel/List";
 import AddHostel from "../pages/Hostel/Add";
 import ChangePassword from "../pages/Profile/cp";
 
+import AddUser from "../pages/Hostel/addUser";
+import AddStaff from "../pages/Hostel/addStaff";
+import AddIncome from "../pages/Hostel/addIncome";
+import AddExpense from "../pages/Hostel/addExpense";
+
 const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/hostels/list", component: HostelList },
 	{ path: "/hostels/add", component: AddHostel },
 	{ path: "/hostels/setup", component: SetUpHostel },
+
+	{ path: "/hostel/user/add", component: AddUser },
+	{ path: "/hostel/staff/add", component: AddStaff },
+	{ path: "/hostel/income/add", component: AddIncome },
+	{ path: "/hostel/expense/add", component: AddExpense },
 
 	// Profiles
 	{ path: "/profile/cp", component: ChangePassword },

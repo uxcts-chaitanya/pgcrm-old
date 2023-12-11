@@ -11,4 +11,15 @@ const enrollHostel = async (data) => {
 	}
 };
 
-export { enrollHostel };
+const addIncome = async (data) => {
+	console.log(data);
+	try {
+		const response = await post("/hostel/student/income", data);
+		if (response.status === 400 || response.status === 500) throw response.data;
+		return response;
+	} catch (err) {
+		throw err[1];
+	}
+};
+
+export { enrollHostel, addIncome };

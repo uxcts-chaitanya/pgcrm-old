@@ -96,6 +96,57 @@ const SidebarContent = (props) => {
 							</li>
 						</ul>
 					</li>
+
+					<li>
+						<Link to="/#" className="has-arrow waves-effect">
+							<i className="ri-pencil-ruler-2-line"></i>
+							<span className="ms-1">{props.t("Staff")}</span>
+						</Link>
+						<ul className="sub-menu">
+							<li>
+								<Link to="/hostel/staff/add">{props.t("Add Staff")}</Link>
+							</li>
+							<li>
+								<Link to="/hostel/staff/list">{props.t("Staff List")}</Link>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<Link to="/#" className="has-arrow waves-effect">
+							<i className="ri-pencil-ruler-2-line"></i>
+							<span className="ms-1">{props.t("Users")}</span>
+						</Link>
+						<ul className="sub-menu">
+							<li>
+								<Link to="/hostel/user/add">{props.t("Add Users")}</Link>
+							</li>
+							<li>
+								<Link to="/hostel/user/list">{props.t("Users List")}</Link>
+							</li>
+						</ul>
+					</li>
+
+					<li>
+						<Link to="/#" className="has-arrow waves-effect">
+							<i className="ri-pencil-ruler-2-line"></i>
+							<span className="ms-1">{props.t("Finance")}</span>
+						</Link>
+						<ul className="sub-menu">
+							<li>
+								<Link to="/hostel/income/add">{props.t("Add Income")}</Link>
+							</li>
+							<li>
+								<Link to="/hostel/income/list">{props.t("Income List")}</Link>
+							</li>
+							<li>
+								<Link to="/hostel/expense/add">{props.t("Add Expenses")}</Link>
+							</li>
+							<li>
+								<Link to="/hostel/expense/list">{props.t("Expense List")}</Link>
+							</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</>

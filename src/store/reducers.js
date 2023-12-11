@@ -5,7 +5,7 @@ import Layout from "./layout/reducer";
 
 // Authentication Module
 import Account from "./auth/register/reducer";
-import Login from "./auth/login/reducer";
+import Auth from "./auth/login/reducer";
 import Forget from "./auth/forgetpwd/reducer";
 
 const rootReducer = combineReducers({
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 
 	// Authentication
 	Account,
-	Login,
+	Auth,
 	Forget,
 });
 

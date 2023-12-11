@@ -5,8 +5,8 @@ import { withRouter, Link } from "react-router-dom";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { checkLogin, apiError } from "../../store/actions";
 
-import logodark from "../../assets/images/logo-dark.png";
-import logolight from "../../assets/images/logo-light.png";
+import logodark from "../../assets/images/logo_hori.png";
+import logolight from "../../assets/images/logo_hori.png";
 import md5 from "md5";
 
 const Login = (props) => {
@@ -45,13 +45,11 @@ const Login = (props) => {
 															<img
 																src={logodark}
 																alt=""
-																height="20"
 																class="auth-logo logo-dark mx-auto"
 															/>
 															<img
 																src={logolight}
 																alt=""
-																height="20"
 																class="auth-logo logo-light mx-auto"
 															/>
 														</Link>
@@ -59,7 +57,7 @@ const Login = (props) => {
 
 													<h4 className="font-size-18 mt-4">Welcome Back !</h4>
 													<p className="text-muted">
-														Sign in to continue to Nazox.
+														Sign in to continue to BoarderBase.
 													</p>
 												</div>
 
@@ -143,20 +141,15 @@ const Login = (props) => {
 
 												<div className="mt-5 text-center">
 													<p>
-														Don't have an account ?{" "}
-														<Link
-															to="/register"
+														Don't have an account ?
+														<a
+															href="https://boarderbase.com/registration/"
 															className="fw-medium text-primary"
 														>
-															{" "}
-															Register{" "}
-														</Link>{" "}
+															Register
+														</a>
 													</p>
-													<p>
-														© 2021 Nazox. Crafted with{" "}
-														<i className="mdi mdi-heart text-danger"></i> by
-														Themesdesign
-													</p>
+													<p>© 2021 BoarderBase.</p>
 												</div>
 											</div>
 										</Col>
@@ -177,7 +170,7 @@ const Login = (props) => {
 };
 
 const mapStatetoProps = (state) => {
-	const { loginError } = state.Login;
+	const { loginError } = state.Auth;
 	return { loginError };
 };
 

@@ -20,7 +20,9 @@ function* loginUser({ payload: { user, history } }) {
 			toastr.warning(response.message);
 		} else {
 			toastr.success(response.message);
+			delete response.user.password;
 			localStorage.setItem("authUser", JSON.stringify(response));
+
 			// Redux.
 			yield put(loginUserSuccessful(response));
 

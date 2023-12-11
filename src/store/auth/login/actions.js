@@ -14,6 +14,7 @@ export const checkLogin = (user, history) => {
 };
 
 export const loginUserSuccessful = (user) => {
+	delete user.password;
 	return {
 		type: LOGIN_USER_SUCCESSFUL,
 		payload: user,
