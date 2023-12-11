@@ -8,6 +8,8 @@ import {} from "../../store/actions";
 import SimpleBar from "simplebar-react";
 
 import SidebarContent from "./SidebarContent";
+import AdminSidebarContent from "./AdminSidebarContent";
+import HostelSidebarContent from "./HostelSidebarContent";
 
 const Sidebar = (props) => {
 	return (
@@ -16,10 +18,19 @@ const Sidebar = (props) => {
 				<div data-simplebar className="h-100">
 					{props.type !== "condensed" ? (
 						<SimpleBar style={{ maxHeight: "100%" }}>
-							<SidebarContent />
+							{props.auth?.loginType === "super_admin" ? (
+								<AdminSidebarContent />
+							) : (
+								<HostelSidebarContent />
+							)}
 						</SimpleBar>
 					) : (
-						<SidebarContent />
+						// {props.auth?.loginType === "super_admin" ? (
+						// 	<AdminSidebarContent />
+						// ) : (
+						// 	<HostelSidebarContent />
+						// )}
+						<></>
 					)}
 				</div>
 			</div>
@@ -30,6 +41,7 @@ const Sidebar = (props) => {
 const mapStatetoProps = (state) => {
 	return {
 		layout: state.Layout,
+		auth: state.Auth,
 	};
 };
 export default connect(mapStatetoProps, {})(withRouter(Sidebar));

@@ -15,6 +15,7 @@ const initialState = {
 	loading: false,
 	isAuthenticated: authUser?.isAuthenticated ?? false,
 	user: authUser?.user ?? {},
+	loginType: authUser?.user.user_type ?? "",
 };
 
 const Auth = (state = initialState, action) => {

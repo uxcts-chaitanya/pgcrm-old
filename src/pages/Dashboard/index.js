@@ -1,6 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Card, CardBody, CardHeader } from "reactstrap";
 
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+
 //Import Breadcrumb
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
@@ -25,41 +28,47 @@ const Dashboard = (props) => {
 						<hr />
 					</div>
 					<Row>
-						<Col md={12} style={{ textAlign: "right" }}>
-							<span style={{ marginRight: "20px" }}>
-								<button
-									className="btn btn-secondary"
-									onClick={() => gotoPage("hostel/user/add")}
-								>
-									Add User
-								</button>
-							</span>
-							<span style={{ marginRight: "20px" }}>
-								<button
-									className="btn btn-secondary"
-									onClick={() => gotoPage("hostel/income/add")}
-								>
-									Add Income
-								</button>
-							</span>
-							<span style={{ marginRight: "20px" }}>
-								<button
-									className="btn btn-secondary"
-									onClick={() => gotoPage("hostel/expense/add")}
-								>
-									Add Expenses
-								</button>
-							</span>
+						{props.auth?.loginType === "hostel_admin" ? (
+							<>
+								<Col md={12} style={{ textAlign: "right" }}>
+									<span style={{ marginRight: "20px" }}>
+										<button
+											className="btn btn-secondary"
+											onClick={() => gotoPage("hostel/user/add")}
+										>
+											Add User
+										</button>
+									</span>
+									<span style={{ marginRight: "20px" }}>
+										<button
+											className="btn btn-secondary"
+											onClick={() => gotoPage("hostel/income/add")}
+										>
+											Add Income
+										</button>
+									</span>
+									<span style={{ marginRight: "20px" }}>
+										<button
+											className="btn btn-secondary"
+											onClick={() => gotoPage("hostel/expense/add")}
+										>
+											Add Expenses
+										</button>
+									</span>
 
-							<span style={{ marginRight: "20px" }}>
-								<button
-									className="btn btn-secondary"
-									onClick={() => gotoPage("hostel/staff/add")}
-								>
-									Add Staff
-								</button>
-							</span>
-						</Col>
+									<span style={{ marginRight: "20px" }}>
+										<button
+											className="btn btn-secondary"
+											onClick={() => gotoPage("hostel/staff/add")}
+										>
+											Add Staff
+										</button>
+									</span>
+								</Col>
+							</>
+						) : (
+							<></>
+						)}
 					</Row>
 					<div>
 						<hr />
@@ -159,4 +168,10 @@ const Dashboard = (props) => {
 	);
 };
 
-export default Dashboard;
+const mapStatetoProps = (state) => {
+	return {
+		auth: state.Auth,
+	};
+};
+
+export default connect(mapStatetoProps, {})(withRouter(Dashboard));

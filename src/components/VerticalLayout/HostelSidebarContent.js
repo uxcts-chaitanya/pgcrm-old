@@ -17,7 +17,7 @@ import {
 	changePreloader,
 } from "../../store/actions";
 
-const SidebarContent = (props) => {
+const HostelSidebarContent = (props) => {
 	const activateParentDropdown = (item) => {
 		item.classList.add("active");
 		const parent = item.parentElement;
@@ -64,6 +64,12 @@ const SidebarContent = (props) => {
 
 	useEffect(() => {
 		initMenu();
+		// let st = setTimeout(() => {
+		// 	ut = props?.Auth?.loginType ?? "super_admin";
+		// 	console.lo
+		// }, 2000);
+
+		// return clearTimeout(st);
 	}, []);
 
 	return (
@@ -90,21 +96,6 @@ const SidebarContent = (props) => {
 						<ul className="sub-menu">
 							<li>
 								<Link to="/hostel/setup">{props.t("SetUp")}</Link>
-							</li>
-						</ul>
-					</li>
-
-					<li>
-						<Link to="/#" className="has-arrow waves-effect">
-							<i className="ri-pencil-ruler-2-line"></i>
-							<span className="ms-1">{props.t("Hostel Management")}</span>
-						</Link>
-						<ul className="sub-menu">
-							<li>
-								<Link to="/hostels/add">{props.t("Add New")}</Link>
-							</li>
-							<li>
-								<Link to="/hostels/list">{props.t("List")}</Link>
 							</li>
 						</ul>
 					</li>
@@ -176,5 +167,5 @@ export default withRouter(
 		changeSidebarType,
 		changeLayoutWidth,
 		changePreloader,
-	})(withNamespaces()(SidebarContent))
+	})(withNamespaces()(HostelSidebarContent))
 );

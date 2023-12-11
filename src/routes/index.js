@@ -31,8 +31,8 @@ const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
 	{ path: "/hostels/list", component: HostelList },
 	{ path: "/hostels/add", component: AddHostel },
-	{ path: "/hostels/setup", component: SetUpHostel },
 
+	{ path: "/hostel/setup", component: SetUpHostel },
 	{ path: "/hostel/user/add", component: AddUser },
 	{ path: "/hostel/staff/add", component: AddStaff },
 	{ path: "/hostel/income/add", component: AddIncome },
