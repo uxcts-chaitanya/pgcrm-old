@@ -39,7 +39,7 @@ function* loginUser({ payload: { user, history } }) {
 					response.user.user_type === "hostel_admin" &&
 					!response.user.setup_done
 				) {
-					history.push("/hostels/setup");
+					history.push("/hostel/setup");
 				} else {
 					history.push("/dashboard");
 				}

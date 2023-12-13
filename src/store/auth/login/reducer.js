@@ -33,11 +33,18 @@ const Auth = (state = initialState, action) => {
 				isAuthenticated: true,
 				user: action.payload.user,
 				loading: false,
+				loginType: action.payload.user.user_type,
 			};
 			break;
 
 		case LOGOUT_USER:
-			state = { ...state };
+			state = {
+				...state,
+				isAuthenticated: false,
+				user: {},
+				loading: false,
+				loginType: "",
+			};
 			break;
 
 		case LOGOUT_USER_SUCCESS:

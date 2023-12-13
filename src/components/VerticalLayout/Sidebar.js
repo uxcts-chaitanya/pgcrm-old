@@ -39,6 +39,7 @@ const Sidebar = (props) => {
 };
 
 const mapStatetoProps = (state) => {
+	console.log(state.Auth);
 	return {
 		layout: state.Layout,
 		auth: state.Auth,
