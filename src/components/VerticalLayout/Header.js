@@ -17,9 +17,9 @@ import { toggleRightSidebar } from "../../store/actions";
 
 //Import logo Images
 import logosmdark from "../../assets/images/logo.png";
-import logodark from "../../assets/images/logo.png";
+import logodark from "../../assets/images/logo_hori.png";
 import logosmlight from "../../assets/images/logo.png";
-import logolight from "../../assets/images/logo.png";
+import logolight from "../../assets/images/logo_hori.png";
 
 const Header = (props) => {
 	const [state, setState] = useState({
