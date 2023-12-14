@@ -25,12 +25,13 @@ const Sidebar = (props) => {
 							)}
 						</SimpleBar>
 					) : (
-						// {props.auth?.loginType === "super_admin" ? (
-						// 	<AdminSidebarContent />
-						// ) : (
-						// 	<HostelSidebarContent />
-						// )}
-						<></>
+						<>
+							{props.auth?.loginType === "super_admin" ? (
+								<AdminSidebarContent />
+							) : (
+								<HostelSidebarContent />
+							)}
+						</>
 					)}
 				</div>
 			</div>

@@ -16,10 +16,10 @@ import { withNamespaces } from "react-i18next";
 import { toggleRightSidebar } from "../../store/actions";
 
 //Import logo Images
-import logosmdark from "../../assets/images/logo_hori.png";
-import logodark from "../../assets/images/logo_hori.png";
-import logosmlight from "../../assets/images/logo_hori.png";
-import logolight from "../../assets/images/logo_hori.png";
+import logosmdark from "../../assets/images/logo.png";
+import logodark from "../../assets/images/logo.png";
+import logosmlight from "../../assets/images/logo.png";
+import logolight from "../../assets/images/logo.png";
 
 const Header = (props) => {
 	const [state, setState] = useState({
@@ -75,10 +75,10 @@ const Header = (props) => {
 
 							<Link to="#" className="logo logo-light">
 								<span className="logo-sm">
-									<img src={logosmlight} alt="" width="190px" height="52px" />
+									<img src={logosmlight} alt="" height="52px" />
 								</span>
 								<span className="logo-lg">
-									<img src={logolight} alt="" width="190px" height="52px" />
+									<img src={logolight} alt="" height="52px" />
 								</span>
 							</Link>
 						</div>
