@@ -264,10 +264,10 @@ const AddHostel = (props) => {
 													name="ownertype"
 												>
 													<option value="">Select</option>
-													<option value="male">PG</option>
-													<option value="female">Hostel</option>
-													<option value="male">Flat</option>
-													<option value="female">Independent</option>
+													<option value="PG">PG</option>
+													<option value="Hostel">Hostel</option>
+													<option value="Flat">Flat</option>
+													<option value="Independent">Independent</option>
 												</select>
 											</Col>
 										</Row>

@@ -14,7 +14,7 @@ const enrollHostel = async (data) => {
 const addIncome = async (data) => {
 	console.log(data);
 	try {
-		const response = await post("/hostel/student/income", data);
+		const response = await post("/hostel/income/add", data);
 		if (response.status === 400 || response.status === 500) throw response.data;
 		return response;
 	} catch (err) {
@@ -22,4 +22,15 @@ const addIncome = async (data) => {
 	}
 };
 
-export { enrollHostel, addIncome };
+const addUserToHostel = async (data) => {
+	console.log(data);
+	try {
+		const response = await post("/hostel/adduser", data);
+		if (response.status === 400 || response.status === 500) throw response.data;
+		return response;
+	} catch (err) {
+		throw err[1];
+	}
+};
+
+export { enrollHostel, addIncome, addUserToHostel };

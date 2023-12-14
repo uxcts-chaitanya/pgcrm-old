@@ -29,8 +29,8 @@ const OtherIncome = () => {
 			pay_mode: "Monthly",
 			reason: reason.current,
 			room_number: 0,
+			income_from: "other",
 		};
-		console.log(data);
 		const response = await addIncome(data);
 		if (response) {
 			toastr.success(`Income added successfully`);

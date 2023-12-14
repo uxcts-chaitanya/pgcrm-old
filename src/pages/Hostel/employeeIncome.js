@@ -13,7 +13,9 @@ import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { addIncome } from "../../models/hostels";
 
-const EmployeeIncome = () => {
+const EmployeeIncome = (props) => {
+	const employee = props.employee?.filter((u) => u.user_type === "employee");
+
 	const employee_id = useRef("");
 	const amount = useRef("");
 	const room_number = useRef("");
@@ -21,13 +23,15 @@ const EmployeeIncome = () => {
 
 	const saveIncome = async (event) => {
 		event.preventDefault();
+
 		let data = {
-			income_by: 1, // TODO: Replace with original value.
-			income_name: employee_name.current,
+			income_by: employee_id.current, // TODO: Replace with original value.
+			// income_name: employee_name.current,
 			amount: amount.current,
 			pay_type: "Cash",
 			pay_mode: "Monthly",
-			room_number: room_number.current,
+			room_number: 1,
+			income_from: "employee",
 		};
 		console.log(data);
 		const response = await addIncome(data);
@@ -53,15 +57,19 @@ const EmployeeIncome = () => {
 								Employee
 							</Label>
 							<Col md={6}>
-								<Input
-									ref={employee_name}
-									type="text"
-									placeholder="Type Employee name to populate"
-									id="employee_name"
+								<select
+									ref={employee_id}
+									id="employee_id"
 									onChange={(event) =>
-										(employee_name.current = event.target.value)
+										(employee_id.current = event.target.value)
 									}
-								/>
+									className="col-md-4 form-control"
+								>
+									<option value="">Select</option>
+									{employee.map((s) => (
+										<option value={s._id}>{s.user_name}</option>
+									))}
+								</select>
 							</Col>
 						</Row>
 

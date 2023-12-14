@@ -10,7 +10,7 @@ import { del, get, post, put } from "../../helpers/api_helper";
 
 // const queryClient = new QueryClient();
 
-const HostelList = () => {
+const ListIncome = () => {
 	// const { data, status } = useQuery("users", getUsers);
 	const [users, setUsers] = useState({});
 
@@ -23,7 +23,7 @@ const HostelList = () => {
 	});
 
 	const getUsers = async () => {
-		return await get("/hostel/list").then((u) => {
+		return await get("/hostel/income/list").then((u) => {
 			setUsers(u);
 		});
 	};
@@ -46,30 +46,27 @@ const HostelList = () => {
 							<table className="table table-alter">
 								<thead>
 									<tr>
-										<th>Name/ID</th>
-										<th>User</th>
-										<th>Email</th>
-										<th>City</th>
-										<th>Approved</th>
-										<th>Setup Done</th>
-										<th>Added On</th>
+										<th>Amount</th>
+										<th>Date</th>
+										<th>From</th>
+										<th>Mode</th>
+										<th>Payment type</th>
 									</tr>
 								</thead>
 								<tbody>
 									{users.length &&
-										users.map((u) => (
-											<tr>
-												<td>{u.hostel_id}</td>
-												<td>
-													{u.firstname} {u.lastname}
-												</td>
-												<td>{u.email}</td>
-												<td>{u.city}</td>
-												<td>{u.is_approved ? "Yes" : "No"}</td>
-												<td>{u.setup_done ? "Yes" : "No"}</td>
-												<td>{new Date(u.joining_date).toDateString()}</td>
-											</tr>
-										))}
+										users.map((u) => {
+											const date = new Date(u.income_date);
+											return (
+												<tr>
+													<td>{u.amount}</td>
+													<td>{u.income_date}</td>
+													<td>{u.income_from ?? "Others"}</td>
+													<td>{u.pay_mode}</td>
+													<td>{u.pay_type}</td>
+												</tr>
+											);
+										})}
 								</tbody>
 							</table>
 						</CardBody>
@@ -81,4 +78,4 @@ const HostelList = () => {
 	);
 };
 
-export default HostelList;
+export default ListIncome;

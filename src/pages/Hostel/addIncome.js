@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
 	Card,
 	CardHeader,
@@ -10,6 +10,8 @@ import {
 	Input,
 } from "reactstrap";
 
+import { del, get, post, put } from "../../helpers/api_helper";
+
 import StudentIncome from "./studentIncome";
 import EmployeeIncome from "./employeeIncome";
 import OtherIncome from "./otherIncome";
@@ -18,6 +20,13 @@ import OtherIncome from "./otherIncome";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
 
 const AddIncome = (props) => {
+	const [users, setUsers] = useState([]);
+	const getUsers = async () => {
+		await get("/hostel/users/list").then((u) => {
+			setUsers(u);
+		});
+	};
+
 	const breadcrumbItems = [
 		{ title: "Home", link: "/" },
 		{ title: "Hostel", link: "#" },
@@ -25,6 +34,11 @@ const AddIncome = (props) => {
 	];
 
 	const [depositor, setDepositor] = useState("student");
+
+	useEffect(() => {
+		getUsers();
+	}, []);
+
 	return (
 		<>
 			<div className="page-content">
@@ -96,9 +110,21 @@ const AddIncome = (props) => {
 									</Row>
 									<hr />
 									<div style={{ clear: "both" }}>&nbsp;</div>
-									{depositor === "student" ? <StudentIncome /> : <></>}
-									{depositor === "employee" ? <EmployeeIncome /> : <></>}
-									{depositor === "guest" ? <EmployeeIncome /> : <></>}
+									{depositor === "student" ? (
+										<StudentIncome students={users ?? {}} />
+									) : (
+										<></>
+									)}
+									{depositor === "employee" ? (
+										<EmployeeIncome employee={users ?? {}} />
+									) : (
+										<></>
+									)}
+									{depositor === "guest" ? (
+										<EmployeeIncome employee={users ?? {}} />
+									) : (
+										<></>
+									)}
 									{depositor === "others" ? <OtherIncome /> : <></>}
 								</CardBody>
 							</Card>

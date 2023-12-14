@@ -10,20 +10,20 @@ import { del, get, post, put } from "../../helpers/api_helper";
 
 // const queryClient = new QueryClient();
 
-const HostelList = () => {
-	// const { data, status } = useQuery("users", getUsers);
+const UserList = () => {
 	const [users, setUsers] = useState({});
 
 	const [state, setState] = useState({
 		breadcrumbItems: [
 			{ title: "Home", link: "/" },
 			{ title: "Hostels", link: "#" },
+			{ title: "Users", link: "#" },
 			{ title: "List", link: "#" },
 		],
 	});
 
 	const getUsers = async () => {
-		return await get("/hostel/list").then((u) => {
+		return await get("/hostel/users/list").then((u) => {
 			setUsers(u);
 		});
 	};
@@ -46,28 +46,30 @@ const HostelList = () => {
 							<table className="table table-alter">
 								<thead>
 									<tr>
-										<th>Name/ID</th>
-										<th>User</th>
-										<th>Email</th>
+										<th>Name</th>
+										<th>Floor/Room</th>
+										<th>Amount</th>
+										<th>Next Payment On</th>
+										<th>Room Type</th>
 										<th>City</th>
-										<th>Approved</th>
-										<th>Setup Done</th>
-										<th>Added On</th>
+										<th>Mobile</th>
+										<th>User</th>
 									</tr>
 								</thead>
 								<tbody>
 									{users.length &&
 										users.map((u) => (
 											<tr>
-												<td>{u.hostel_id}</td>
+												<td>{u.user_name}</td>
 												<td>
-													{u.firstname} {u.lastname}
+													Floor.{u.user_room_floor} / Room No. {u.user_room_no}
 												</td>
-												<td>{u.email}</td>
-												<td>{u.city}</td>
-												<td>{u.is_approved ? "Yes" : "No"}</td>
-												<td>{u.setup_done ? "Yes" : "No"}</td>
-												<td>{new Date(u.joining_date).toDateString()}</td>
+												<td>{u.user_amount}</td>
+												<td>{new Date(u.user_billing_date).toDateString()}</td>
+												<td>{u.user_room_type}</td>
+												<td>{u.user_city}</td>
+												<td>{u.user_mobile_number}</td>
+												<td>{u.user_type}</td>
 											</tr>
 										))}
 								</tbody>
@@ -81,4 +83,4 @@ const HostelList = () => {
 	);
 };
 
-export default HostelList;
+export default UserList;

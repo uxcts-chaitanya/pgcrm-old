@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
 	Card,
 	CardHeader,
@@ -11,11 +11,14 @@ import {
 } from "reactstrap";
 import { Redirect } from "react-router-dom";
 
+// import { del, get, post, put } from "../../helpers/api_helper";
+
 import toastr from "toastr";
 import "toastr/build/toastr.min.css";
 import { addIncome } from "../../models/hostels";
 
 const StudentIncome = (props) => {
+	const students = props.students?.filter((u) => u.user_type === "student");
 	const student_id = useRef("");
 	const amount = useRef("");
 	const pay_type = useRef("");
@@ -29,7 +32,8 @@ const StudentIncome = (props) => {
 			amount: amount.current,
 			pay_type: pay_type.current,
 			pay_mode: pay_mode.current,
-			room_number: room_number.current,
+			room_number: 1,
+			income_from: "student",
 		};
 		const response = await addIncome(data);
 		if (response) {
@@ -51,7 +55,20 @@ const StudentIncome = (props) => {
 								Student
 							</Label>
 							<Col md={6}>
-								<Input
+								<select
+									ref={student_id}
+									id="student_id"
+									onChange={(event) =>
+										(student_id.current = event.target.value)
+									}
+									className="col-md-4 form-control"
+								>
+									<option value="">Select</option>
+									{students.map((s) => (
+										<option value={s._id}>{s.user_name}</option>
+									))}
+								</select>
+								{/* <Input
 									ref={student_id}
 									type="text"
 									placeholder="Type Student name to populate"
@@ -59,7 +76,7 @@ const StudentIncome = (props) => {
 									onChange={(event) =>
 										(student_id.current = event.target.value)
 									}
-								/>
+								/> */}
 							</Col>
 						</Row>
 						<Row className="mb-4">

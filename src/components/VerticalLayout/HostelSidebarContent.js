@@ -122,10 +122,10 @@ const HostelSidebarContent = (props) => {
 						</Link>
 						<ul className="sub-menu">
 							<li>
-								<Link to="/hostel/user/add">{props.t("Add Users")}</Link>
+								<Link to="/hostel/users/add">{props.t("Add Users")}</Link>
 							</li>
 							<li>
-								<Link to="/hostel/user/list">{props.t("Users List")}</Link>
+								<Link to="/hostel/users/list">{props.t("Users List")}</Link>
 							</li>
 						</ul>
 					</li>

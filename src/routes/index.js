@@ -23,8 +23,10 @@ import AddHostel from "../pages/Hostel/Add";
 import ChangePassword from "../pages/Profile/cp";
 
 import AddUser from "../pages/Hostel/addUser";
+import UserList from "../pages/Hostel/UserList";
 import AddStaff from "../pages/Hostel/addStaff";
 import AddIncome from "../pages/Hostel/addIncome";
+import ListIncome from "../pages/Hostel/listIncome";
 import AddExpense from "../pages/Hostel/addExpense";
 
 const authProtectedRoutes = [
@@ -33,9 +35,14 @@ const authProtectedRoutes = [
 	{ path: "/hostels/add", component: AddHostel },
 
 	{ path: "/hostel/setup", component: SetUpHostel },
-	{ path: "/hostel/user/add", component: AddUser },
+	{ path: "/hostel/users/add", component: AddUser },
+
+	{ path: "/hostel/users/list", component: UserList },
 	{ path: "/hostel/staff/add", component: AddStaff },
+
 	{ path: "/hostel/income/add", component: AddIncome },
+	{ path: "/hostel/income/list", component: ListIncome },
+
 	{ path: "/hostel/expense/add", component: AddExpense },
 
 	// Profiles

@@ -6,11 +6,11 @@ import { Card, Container, Row, Col, CardHeader, CardBody } from "reactstrap";
 // 	useQuery,
 // } from "@tanstack/react-query";
 import Breadcrumbs from "../../components/Common/Breadcrumb";
-import { del, get, post, put } from "../../helpers/api_helper";
+import { get } from "../../helpers/api_helper";
 
 // const queryClient = new QueryClient();
 
-const HostelList = () => {
+const IncomeList = () => {
 	// const { data, status } = useQuery("users", getUsers);
 	const [users, setUsers] = useState({});
 
@@ -23,7 +23,7 @@ const HostelList = () => {
 	});
 
 	const getUsers = async () => {
-		return await get("/hostel/list").then((u) => {
+		return await get("/hostel/income/list").then((u) => {
 			setUsers(u);
 		});
 	};
@@ -81,4 +81,4 @@ const HostelList = () => {
 	);
 };
 
-export default HostelList;
+export default IncomeList;
