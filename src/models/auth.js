@@ -53,17 +53,8 @@ const postLogin = async (url, data) => {
 };
 
 // postForgetPwd
-const postForgetPwd = (url, data) => {
-	return axios
-		.post(url, data)
-		.then((response) => {
-			if (response.status === 400 || response.status === 500)
-				throw response.data;
-			return response.data;
-		})
-		.catch((err) => {
-			throw err[1];
-		});
+const postForgetPwd = async (url, data) => {
+	return await post(url, data, {});
 };
 
 export {

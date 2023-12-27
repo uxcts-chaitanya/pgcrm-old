@@ -29,6 +29,7 @@ import StaffList from "../pages/Hostel/StaffList";
 import AddIncome from "../pages/Hostel/addIncome";
 import ListIncome from "../pages/Hostel/listIncome";
 import AddExpense from "../pages/Hostel/addExpense";
+import ExpenseList from "../pages/Hostel/ExpenseList";
 
 const authProtectedRoutes = [
 	{ path: "/dashboard", component: Dashboard },
@@ -46,6 +47,7 @@ const authProtectedRoutes = [
 	{ path: "/hostel/income/list", component: ListIncome },
 
 	{ path: "/hostel/expense/add", component: AddExpense },
+	{ path: "/hostel/expense/list", component: ExpenseList },
 
 	// Profiles
 	{ path: "/profile/cp", component: ChangePassword },
